@@ -1,7 +1,14 @@
+import { RouterProvider } from "react-router"
+
+import { appRouter } from './router/app.router';
 
 
 export const Disclone = () => {
   return (
-    <div>Hellow world</div>
+    <>
+      <RouterProvider router={appRouter} />
+
+
+    </>
   )
 }
