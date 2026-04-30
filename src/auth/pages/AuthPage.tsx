@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Signin } from "../components/signin/Signin";
+import { Signup } from "../components/signin/Signin";
 import { Button } from "@/components/ui/button";
 import { Login } from "../components/login/Login";
 
@@ -13,7 +13,7 @@ export const AuthPage = () => {
 
     <>
 
-    {isLogin?<Login/>:<Signin/>}
+    {isLogin?<Login isLogin={isLogin} setIsLogin={setIsLogin}/>:<Signup isLogin={isLogin} setIsLogin={setIsLogin}/>}
 
     <Button  onClick={()=> setIsLogin(!isLogin)}>
 

@@ -11,12 +11,23 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
+interface Props{
+  isLogin: boolean,
+  setIsLogin: React.Dispatch<React.SetStateAction<boolean>>,
+}
 
 
 
-export const Login = () => {
+
+export const Login = ({isLogin, setIsLogin}:Props) => {
+
+  const handlePage= ()=>{
+
+    setIsLogin(!isLogin);
+
+}
   return (
-    <>
+    <div className="flex items-center justify-center min-h-screen">
 
 
 
@@ -27,9 +38,7 @@ export const Login = () => {
           <CardDescription>
             Enter your email below to login to your account
           </CardDescription>
-          <CardAction>
-            <Button variant="link">Sign Up</Button>
-          </CardAction>
+          
         </CardHeader>
         <CardContent>
           <form>
@@ -65,10 +74,13 @@ export const Login = () => {
           <Button variant="outline" className="w-full">
             Login with Google
           </Button>
+          <CardAction>
+            <Button variant="link" onClick={handlePage}> Don't have an account? Sign up</Button>
+          </CardAction>
         </CardFooter>
       </Card>
 
-    </>
+    </div>
 
   )
 }
