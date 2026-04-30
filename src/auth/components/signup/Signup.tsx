@@ -66,9 +66,9 @@ export const Signup = ({ isLogin, setIsLogin }: Props) => {
             Sign up
           </Button>
 
-          <Button variant="outline" className="w-full">
+          {/* <Button variant="outline" className="w-full">
             Sign up with Google
-          </Button>
+          </Button> */}
 
           <CardAction>
             <Button variant="link" onClick={handlePage}>

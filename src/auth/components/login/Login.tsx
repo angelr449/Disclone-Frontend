@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -10,8 +11,9 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { getLogin } from "@/auth/actions/get-login"
 
-interface Props{
+interface Props {
   isLogin: boolean,
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>,
 }
@@ -19,13 +21,22 @@ interface Props{
 
 
 
-export const Login = ({isLogin, setIsLogin}:Props) => {
+export const Login = ({ isLogin, setIsLogin }: Props) => {
 
-  const handlePage= ()=>{
+  const handlePage = () => {
 
     setIsLogin(!isLogin);
 
-}
+  }
+
+  const {data: user} = useQuery({
+    queryKey: ['data-user'],
+    queryFn: ()=> getLogin(),
+    staleTime: 1000*60*5
+  })
+
+
+
   return (
     <div className="flex items-center justify-center min-h-screen">
 
@@ -38,7 +49,7 @@ export const Login = ({isLogin, setIsLogin}:Props) => {
           <CardDescription>
             Enter your email below to login to your account
           </CardDescription>
-          
+
         </CardHeader>
         <CardContent>
           <form>
@@ -71,9 +82,9 @@ export const Login = ({isLogin, setIsLogin}:Props) => {
           <Button type="submit" className="w-full">
             Login
           </Button>
-          <Button variant="outline" className="w-full">
+          {/* <Button variant="outline" className="w-full">
             Login with Google
-          </Button>
+          </Button> */}
           <CardAction>
             <Button variant="link" onClick={handlePage}> Don't have an account? Sign up</Button>
           </CardAction>
