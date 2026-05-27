@@ -13,7 +13,10 @@ export const AuthPage = () => {
 
     <>
 
-      {isLogin ? <Login isLogin={isLogin} setIsLogin={setIsLogin} /> : <Signup isLogin={isLogin} setIsLogin={setIsLogin} />}
+      {
+        isLogin ? <Login isLogin={isLogin} setIsLogin={setIsLogin} />
+          : <Signup isLogin={isLogin} setIsLogin={setIsLogin} />
+      }
 
       <Button onClick={() => setIsLogin(!isLogin)}>
 

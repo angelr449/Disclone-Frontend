@@ -18,6 +18,7 @@ export const Signup = ({ isLogin, setIsLogin }: Props) => {
     <div className="flex items-center justify-center min-h-screen">
 
       <Card className="w-full max-w-sm">
+        <form>
         <CardHeader>
           <CardTitle>Create an account</CardTitle>
           <CardDescription>
@@ -26,7 +27,7 @@ export const Signup = ({ isLogin, setIsLogin }: Props) => {
         </CardHeader>
 
         <CardContent>
-          <form>
+          
             <div className="flex flex-col gap-6">
 
               {/* Name */}
@@ -58,7 +59,7 @@ export const Signup = ({ isLogin, setIsLogin }: Props) => {
               </div>
 
             </div>
-          </form>
+         
         </CardContent>
 
         <CardFooter className="flex-col gap-2">
@@ -76,6 +77,7 @@ export const Signup = ({ isLogin, setIsLogin }: Props) => {
             </Button>
           </CardAction>
         </CardFooter>
+         </form>
       </Card>
 
     </div>
