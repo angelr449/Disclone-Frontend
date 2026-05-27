@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { getLogin } from "@/app/actions/get-login"
+import { postLogin } from "@/app/actions/post-login"
 
 interface Props {
   isLogin: boolean,
@@ -36,7 +36,7 @@ export const Login = ({ isLogin, setIsLogin }: Props) => {
     }: {
       email: string;
       password: string;
-    }) => getLogin(email, password),
+    }) => postLogin(email, password),
   });
 
   const handleSubmit = async (
