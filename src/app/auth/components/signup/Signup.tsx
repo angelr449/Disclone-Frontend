@@ -1,6 +1,6 @@
 import { postSignup } from "@/app/actions/post-signup"
 import { Button } from "@/components/ui/button"
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useMutation } from "@tanstack/react-query"
@@ -66,77 +66,181 @@ export const Signup = ({ isLogin, setIsLogin }: Props) => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
+  <div className="flex items-center justify-center min-h-screen bg-[#313338]">
 
-      <Card className="w-full max-w-sm">
-        <form onSubmit={handleSubmit}>
-          <CardHeader>
-            <CardTitle>Create an account</CardTitle>
-            <CardDescription>
-              Enter your details below to create your account
-            </CardDescription>
-          </CardHeader>
+    <Card className="w-full max-w-md bg-[#2b2d31] border-[#1e1f22] text-white shadow-2xl">
 
-          <CardContent>
+      <form onSubmit={handleSubmit}>
 
-            <div className="flex flex-col gap-6">
+        <CardHeader className="space-y-2 text-center">
 
-              {/* Name */}
-              <div className="grid gap-2">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
+          <CardTitle className="text-2xl font-bold">
+            Create an account
+          </CardTitle>
 
-              {/* Email */}
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
+          <CardDescription className="text-[#b5bac1]">
+            Join the conversation and start chatting.
+          </CardDescription>
 
-              {/* Password */}
-              <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" name="password" type="password" required />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="password">Repeat Password</Label>
-                <Input id="repeat-password" name="repeat-password" type="repeat-password" required />
-              </div>
+        </CardHeader>
+
+        <CardContent>
+
+          <div className="flex flex-col gap-5">
+
+            {/* Name */}
+            <div className="grid gap-2">
+
+              <Label
+                htmlFor="name"
+                className="text-xs font-bold uppercase text-[#b5bac1] mt-3"
+              >
+                Name
+              </Label>
+
+              <Input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="John Doe"
+                required
+                className="
+                  bg-[#1e1f22]
+                  border-[#1e1f22]
+                  text-white
+                  placeholder:text-[#6d6f78]
+                  focus-visible:ring-[#5865f2]
+                "
+              />
 
             </div>
 
-          </CardContent>
+            {/* Email */}
+            <div className="grid gap-2">
 
-          <CardFooter className="flex-col gap-2">
-            <Button type="submit" className="w-full">
-              Sign up
+              <Label
+                htmlFor="email"
+                className="text-xs font-bold uppercase text-[#b5bac1]"
+              >
+                Email
+              </Label>
+
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+                className="
+                  bg-[#1e1f22]
+                  border-[#1e1f22]
+                  text-white
+                  placeholder:text-[#6d6f78]
+                  focus-visible:ring-[#5865f2]
+                "
+              />
+
+            </div>
+
+            {/* Password */}
+            <div className="grid gap-2">
+
+              <Label
+                htmlFor="password"
+                className="text-xs font-bold uppercase text-[#b5bac1]"
+              >
+                Password
+              </Label>
+
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                required
+                className="
+                  bg-[#1e1f22]
+                  border-[#1e1f22]
+                  text-white
+                  placeholder:text-[#6d6f78]
+                  focus-visible:ring-[#5865f2]
+                "
+              />
+
+            </div>
+
+            {/* Repeat Password */}
+            <div className="grid gap-2">
+
+              <Label
+                htmlFor="repeat-password"
+                className="text-xs font-bold uppercase text-[#b5bac1]"
+              >
+                Repeat Password
+              </Label>
+
+              <Input
+                id="repeat-password"
+                name="repeat-password"
+                type="password"
+                required
+                className="
+                  bg-[#1e1f22]
+                  border-[#1e1f22]
+                  text-white
+                  placeholder:text-[#6d6f78]
+                  focus-visible:ring-[#5865f2]
+                  mb-4
+                "
+              />
+
+            </div>
+
+          </div>
+
+        </CardContent>
+
+        <CardFooter className="flex flex-col gap-4 bg-[#2b2d31]">
+
+          <Button
+            type="submit"
+            disabled={mutation.isPending}
+            className="
+              w-full
+              bg-[#5865f2]
+              hover:bg-[#4752c4]
+              text-white
+              font-medium
+            "
+          >
+            {mutation.isPending ? "Creating account..." : "Sign Up"}
+          </Button>
+
+          <div className="text-sm text-[#949ba4]">
+
+            Already have an account?{" "}
+
+            <Button
+              type="button"
+              variant="link"
+              onClick={handlePage}
+              className="
+                p-0
+                h-auto
+                text-[#00a8fc]
+                hover:no-underline
+              "
+            >
+              Login
             </Button>
 
-            {/* <Button variant="outline" className="w-full">
-            Sign up with Google
-          </Button> */}
+          </div>
 
-            <CardAction>
-              <Button type="button" variant="link" onClick={handlePage}>
-                Already have an account? Login
-              </Button>
-            </CardAction>
-          </CardFooter>
-        </form>
-      </Card>
+        </CardFooter>
 
-    </div>
-  )
+      </form>
+
+    </Card>
+
+  </div>
+)
 }

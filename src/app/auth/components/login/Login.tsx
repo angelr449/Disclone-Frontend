@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query"
 import { Button } from "@/components/ui/button"
 import {
   Card,
-  CardAction,
+  
   CardContent,
   CardDescription,
   CardFooter,
@@ -69,64 +69,145 @@ export const Login = ({ isLogin, setIsLogin }: Props) => {
   };
 
 
-  return (
-    <div className="flex items-center justify-center min-h-screen">
+ return (
+  <div className="flex items-center justify-center min-h-screen bg-[#313338]">
 
+    <Card className="w-full max-w-md bg-[#2b2d31] border-[#1e1f22] text-white shadow-2xl">
 
+      <form onSubmit={handleSubmit}>
 
+        <CardHeader className="space-y-2 text-center">
 
-      <Card className="w-full max-w-sm">
-        <form onSubmit={handleSubmit}>
-          <CardHeader>
-            <CardTitle>Login to your account</CardTitle>
-            <CardDescription>
-              Enter your email below to login to your account
-            </CardDescription>
+          <CardTitle className="text-2xl font-bold">
+            Welcome back!
+          </CardTitle>
 
-          </CardHeader>
-          <CardContent>
+          <CardDescription className="text-[#b5bac1]">
+            We're so excited to see you again!
+          </CardDescription>
 
-            <div className="flex flex-col gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="m@example.com"
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
-                <Input id="password" name="password" type="password" required />
-              </div>
+        </CardHeader>
+
+        <CardContent>
+
+          <div className="flex flex-col gap-5">
+
+            {/* Email */}
+            <div className="grid gap-2">
+
+              <Label
+                htmlFor="email"
+                className="text-xs font-bold uppercase text-[#b5bac1] mt-3"
+              >
+                Email
+              </Label>
+
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+                className="
+                  bg-[#1e1f22]
+                  border-[#1e1f22]
+                  text-white
+                  placeholder:text-[#6d6f78]
+                  focus-visible:ring-[#5865f2]
+                  
+                "
+              />
+
             </div>
 
-          </CardContent>
-          <CardFooter className="flex-col gap-2">
-            <Button type="submit" className="w-full">
-              Login
+            {/* Password */}
+            <div className="grid gap-2">
+
+              <div className="flex items-center justify-between">
+
+                <Label
+                  htmlFor="password"
+                  className="text-xs font-bold uppercase text-[#b5bac1]"
+                >
+                  Password
+                </Label>
+
+                <a
+                  href="#"
+                  className="
+                    text-xs
+                    text-[#00a8fc]
+                    hover:underline
+                  "
+                >
+                  Forgot your password?
+                </a>
+
+              </div>
+
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                required
+                className="
+                  bg-[#1e1f22]
+                  border-[#1e1f22]
+                  text-white
+                  placeholder:text-[#6d6f78]
+                  focus-visible:ring-[#5865f2]
+                  mb-4
+                "
+              />
+
+            </div>
+
+          </div>
+
+        </CardContent>
+
+        <CardFooter className="flex flex-col gap-4 bg-[#2b2d31]" >
+
+          <Button
+            type="submit"
+            disabled={mutation.isPending}
+            className="
+              w-full
+              bg-[#5865f2]
+              hover:bg-[#4752c4]
+              text-white
+              font-medium
+            "
+          >
+            {mutation.isPending ? "Logging in..." : "Login"}
+          </Button>
+
+          <div className="text-sm text-[#949ba4]">
+
+            Don't have an account?{" "}
+
+            <Button
+              variant="link"
+              type="button"
+              onClick={handlePage}
+              className="
+                p-0
+                h-auto
+                text-[#00a8fc]
+                hover:no-underline
+              "
+            >
+              Sign up
             </Button>
-            {/* <Button variant="outline" className="w-full">
-            Login with Google
-          </Button> */}
-            <CardAction>
-              <Button variant="link" type="button" onClick={handlePage}> Don't have an account? Sign up</Button>
-            </CardAction>
-          </CardFooter>
-        </form>
-      </Card>
 
-    </div>
+          </div>
 
-  )
+        </CardFooter>
+
+      </form>
+
+    </Card>
+
+  </div>
+)
 }
