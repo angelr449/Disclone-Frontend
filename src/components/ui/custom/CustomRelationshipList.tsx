@@ -1,12 +1,19 @@
-import { Button } from "../button"
+import { CustomUserListItem } from "./CustomUserListItem"
+
 
 
 export const CustomRelationshipList = () => {
     return (
-        <div>
-            <Button variant="ghost">
-                hiii
-            </Button>
-        </div>
+        <ul className="flex flex-col gap-1">
+            {/* {users.map((user) => (
+                <li key={user.id}>
+                    <UserListItem user={user} />
+                </li>
+            ))} */}
+
+            <li>
+                <CustomUserListItem name='juan' status="online"/>
+            </li>
+        </ul>
     )
 }
