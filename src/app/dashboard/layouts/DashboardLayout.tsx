@@ -58,7 +58,7 @@ export const DashboardLayout = () => {
 
             <TabsTrigger
               value="add-friend"
-              className=" text-white bg-green-600 hover:bg-green-700  rounded-sm data-[state=active]:bg-green-700 data-[state=active]:text-white"
+              className=" text-white bg-green-600 hover:bg-green-700  rounded-sm data-[state=active]:bg-green-900 data-[state=active]:text-white"
             >
              <Link to="/friends/add">
                Add Friend
