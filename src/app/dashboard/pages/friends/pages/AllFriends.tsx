@@ -1,4 +1,4 @@
-import { CustomRelationshipList } from "@/components/ui/custom/CustomRelationshipList"
+import { CustomRelationshipList } from "@/app/dashboard/components/custom/CustomRelationshipList"
 
 
 export const AllFriends = () => {

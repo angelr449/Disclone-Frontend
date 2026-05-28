@@ -1,5 +1,8 @@
 import { CustomUserListItem } from "./CustomUserListItem"
 
+// interface Props {
+    
+// }
 
 
 export const CustomRelationshipList = () => {

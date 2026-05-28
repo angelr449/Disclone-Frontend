@@ -12,6 +12,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { postLogin } from "@/app/actions/post-login"
+// import { verifyJWT } from "@/helpers/verifyJWT"
 
 interface Props {
   isLogin: boolean,
@@ -57,7 +58,11 @@ export const Login = ({ isLogin, setIsLogin }: Props) => {
       },
       {
         onSuccess: (data) => {
-          console.log("SUCCESS", data);
+          console.log("SUCCESS");
+          localStorage.setItem("token", data.data.token)
+          
+          // const user = verifyJWT(data.data.token);
+          
         },
 
         onError: (error) => {
