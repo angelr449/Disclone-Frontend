@@ -1,4 +1,4 @@
-import { Outlet } from "react-router"
+import { Link, Outlet } from "react-router"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Separator } from "@/components/ui/separator"
 import { Users } from "lucide-react"
@@ -32,28 +32,37 @@ export const DashboardLayout = () => {
               value="online"
               className="text-white data-[state=active]:bg-[#434552] data-[state=active]:text-white rounded-sm"
             >
-              Online
+              <Link to="/">
+                Online
+              </Link>
+
             </TabsTrigger>
 
             <TabsTrigger
               value="all"
               className="text-white data-[state=active]:bg-[#434552] data-[state=active]:text-white rounded-sm"
             >
-              All
+              <Link to="/friends">
+                All
+              </Link>
             </TabsTrigger>
 
             <TabsTrigger
               value="pending"
               className="text-white data-[state=active]:bg-[#434552] data-[state=active]:text-white rounded-sm"
             >
-              Pending
+              <Link to="/friends/pending">
+                Pending
+              </Link>
             </TabsTrigger>
 
             <TabsTrigger
               value="add-friend"
               className=" text-white bg-green-600 hover:bg-green-700  rounded-sm data-[state=active]:bg-green-700 data-[state=active]:text-white"
             >
-              Add Friend
+             <Link to="/friends/add">
+               Add Friend
+              </Link>
             </TabsTrigger>
 
           </TabsList>

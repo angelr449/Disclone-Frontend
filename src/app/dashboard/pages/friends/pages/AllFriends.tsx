@@ -1,7 +1,10 @@
+import { CustomRelationshipList } from "@/components/ui/custom/CustomRelationshipList"
 
 
 export const AllFriends = () => {
   return (
-    <div>AllFriends</div>
+    <div>
+      <CustomRelationshipList/>
+    </div>
   )
 }
