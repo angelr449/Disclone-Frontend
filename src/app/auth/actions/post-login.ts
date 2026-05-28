@@ -1,4 +1,4 @@
-import { backendPath } from "../../api/backend-path.api";
+import { backendPath } from "../../../api/backend-path.api";
 
 
 export const  postLogin = async(email:string , password:string ) =>{

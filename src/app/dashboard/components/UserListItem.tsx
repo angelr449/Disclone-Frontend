@@ -1,5 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "../../../../components/ui/avatar"
-import { Button } from "../../../../components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "../../../components/ui/avatar"
+import { Button } from "../../../components/ui/button"
 
 interface Props {
     name: string;
@@ -8,7 +8,7 @@ interface Props {
 
 }
 
-export const CustomUserListItem = ({ name, avatar, status }: Props) => {
+export const UserListItem = ({ name, avatar, status }: Props) => {
     return (
         <Button
             variant="ghost"

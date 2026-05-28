@@ -1,11 +1,11 @@
-import { CustomUserListItem } from "./CustomUserListItem"
+import { UserListItem } from "./UserListItem"
 
 // interface Props {
     
 // }
 
 
-export const CustomRelationshipList = () => {
+export const RelationshipList = () => {
     return (
         <ul className="flex flex-col gap-1">
             {/* {users.map((user) => (
@@ -15,7 +15,7 @@ export const CustomRelationshipList = () => {
             ))} */}
 
             <li>
-                <CustomUserListItem name='juan' status="online"/>
+                <UserListItem name='juan' status="online"/>
             </li>
         </ul>
     )

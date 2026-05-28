@@ -1,10 +1,10 @@
-import { CustomRelationshipList } from "@/app/dashboard/components/custom/CustomRelationshipList"
+import { RelationshipList } from "@/app/dashboard/components/RelationshipList"
 
 
 export const AllFriends = () => {
   return (
     <div>
-      <CustomRelationshipList/>
+      <RelationshipList/>
     </div>
   )
 }
