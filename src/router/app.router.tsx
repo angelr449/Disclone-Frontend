@@ -8,45 +8,33 @@ import { OnlineFriends } from "@/app/dashboard/pages/friends/pages/OnlineFriends
 import { PendingFriends } from "@/app/dashboard/pages/friends/pages/PendingFriends";
 
 import { createBrowserRouter } from "react-router";
+import { ProtectedRoute } from "./guards/ProtectedRoute";
+import { PublicRoute } from "./guards/PublicRoute";
 
 
 
 
 export const appRouter = createBrowserRouter([
     {
-        path: '/',
-        element: <DashboardLayout />,
+        element: <ProtectedRoute />,
         children: [
             {
-                index: true,
-                element: <OnlineFriends />,
+                path: "/",
+                element: <DashboardLayout />,
+                children: [
+                    { index: true, element: <OnlineFriends /> },
+                    { path: "friends", element: <AllFriends /> },
+                    { path: "friends/pending", element: <PendingFriends /> },
+                    { path: "friends/add", element: <AddFriends /> },
+                ],
             },
-
-            {
-                path: "friends",
-                element: <AllFriends />,
-            },
-
-            {
-                path: "friends/pending",
-                element: <PendingFriends />,
-            },
-
-            {
-                path: "friends/add",
-                element: <AddFriends />,
-            },
-        ]
+        ],
     },
 
     {
-
-        path: '/auth',
-        element: <AuthPage />
-
+        element: <PublicRoute />,
+        children: [
+            { path: "/auth", element: <AuthPage /> },
+        ],
     },
-
-
-
-
-])
+]);
