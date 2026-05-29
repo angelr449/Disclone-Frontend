@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router"
 import { useMutation } from "@tanstack/react-query"
 import { Button } from "@/components/ui/button"
 import {
@@ -23,6 +24,8 @@ interface Props {
 
 
 export const Login = ({ isLogin, setIsLogin }: Props) => {
+
+  const navigate = useNavigate();
 
   const handlePage = () => {
 
@@ -60,8 +63,9 @@ export const Login = ({ isLogin, setIsLogin }: Props) => {
         onSuccess: (data) => {
           console.log("SUCCESS");
           localStorage.setItem("token", data.data.token)
+          navigate("/")
           
-          // const user = verifyJWT(data.data.token);
+          
           
         },
 

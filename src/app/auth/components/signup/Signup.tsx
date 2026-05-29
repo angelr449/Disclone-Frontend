@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useMutation } from "@tanstack/react-query"
 import { postSignup } from "../../actions/post-signup"
+import { useNavigate } from "react-router"
 
 
 interface Props {
@@ -20,6 +21,7 @@ interface SignupData {
 }
 
 export const Signup = ({ isLogin, setIsLogin }: Props) => {
+  const navigate = useNavigate();
 
   const handlePage = () => {
     setIsLogin(!isLogin)
@@ -55,7 +57,9 @@ export const Signup = ({ isLogin, setIsLogin }: Props) => {
       },
       {
         onSuccess: (data) => {
-          console.log("SUCCESS", data);
+          console.log("SUCCESS");
+          localStorage.setItem("token", data.data.token)
+          navigate("/")
         },
 
         onError: (error) => {
