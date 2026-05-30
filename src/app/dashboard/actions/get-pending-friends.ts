@@ -3,8 +3,8 @@
 import { backendPath } from "@/api/backend-path.api";
 
 
-export const getPedingFriends = async () => {
-    const { data } = await backendPath.get("friends/peding");
+export const getPendingFriends = async () => {
+    const { data } = await backendPath.get("friends/pending");
     
     return data.friends;
 };
