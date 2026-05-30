@@ -1,12 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "../../../components/ui/avatar"
 import { Button } from "../../../components/ui/button"
+import { type User } from '../../../types/user';
 
-interface User {
-    id: number
-    name: string
-    avatar?: string
-    status: string
-}
+
+
 
 interface Props {
     user: User

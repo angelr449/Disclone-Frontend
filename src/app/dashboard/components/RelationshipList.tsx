@@ -1,12 +1,7 @@
 import { UserListItem } from "./UserListItem"
+import { type User } from '../../../types/user';
 
 
-interface User{
-    id: number
-    name: string;
-    avatar?: string;
-    status: string;
-}
 
 interface Props {
     users: User[]
