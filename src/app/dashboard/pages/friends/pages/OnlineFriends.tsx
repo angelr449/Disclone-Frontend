@@ -8,6 +8,9 @@ import { useOnlineFriends } from "../hooks/useFriends";
 export const OnlineFriends = () => {
   const { data: friends } = useOnlineFriends();
 
+  // solo mostrar usuarios que no esten desconectados
+  
+
   return (
 
     <div>

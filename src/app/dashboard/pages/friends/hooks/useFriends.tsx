@@ -1,6 +1,7 @@
 // hooks/useFriends.ts
 import { useQuery } from "@tanstack/react-query";
 import { getFriends } from "@/app/dashboard/actions/get-friends";
+import { getPedingFriends } from "@/app/dashboard/actions/get-peding-friends";
 
 export const useAllFriends = () => {
     return useQuery({
@@ -15,3 +16,10 @@ export const useOnlineFriends = () => {
         queryFn: getFriends,
     });
 };
+
+export const usePedingFriends = ()=>{
+    return useQuery({
+        queryKey:["peding-friends"],
+        queryFn: getPedingFriends,
+    })
+}
