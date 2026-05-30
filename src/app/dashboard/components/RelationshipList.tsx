@@ -3,6 +3,7 @@ import { type User } from '../../../types/user';
 
 
 
+
 interface Props {
     users: User[]
 }
@@ -14,6 +15,7 @@ export const RelationshipList = ({users}:Props) => {
             {users.map((user) => (
                 <li key={user.id}>
                     <UserListItem user={user} />
+                    
                 </li>
             ))}
 

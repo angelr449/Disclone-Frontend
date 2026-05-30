@@ -29,6 +29,8 @@ export const UserListItem = ({ user }: Props) => {
                     {user.status}
                 </span>
             </div>
+
+            <Button>Prueba</Button>
         </Button>
     )
 }
