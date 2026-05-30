@@ -6,15 +6,19 @@ import { useAllFriends } from "../hooks/useFriends";
 
 
 export const AllFriends = () => {
+  
+
+  const { data: friends } = useAllFriends();
 
   
-  const { data: friends } = useAllFriends();
- 
+
   return (
 
     <div>
-      <h4>18</h4>
-      <RelationshipList users={friends??[]} />
+      <h4 className="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-400">
+        All Friends — {friends?.length || 0}
+      </h4>
+      <RelationshipList users={friends ?? []} />
     </div>
   )
 }
