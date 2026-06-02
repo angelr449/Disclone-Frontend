@@ -1,16 +1,20 @@
 
 import { RelationshipList } from "@/app/dashboard/components/RelationshipList"
 import { useAllFriends } from "../hooks/useFriends";
+import { Button } from "@/components/ui/button";
 
 
 
 
 export const AllFriends = () => {
-  
+
 
   const { data: friends } = useAllFriends();
 
-  
+  const handleMessage = (id: number) => {
+    console.log("Enviar mensaje a", id);
+  };
+
 
   return (
 
@@ -18,7 +22,15 @@ export const AllFriends = () => {
       <h4 className="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-400">
         All Friends — {friends?.length || 0}
       </h4>
-      <RelationshipList users={friends ?? []} />
+      <RelationshipList users={friends ?? []}
+        renderActions={(user)=>(
+          <Button 
+            onClick={()=> handleMessage(user.id)}
+          >
+            Mensaje
+          </Button>
+        )}
+      />
     </div>
   )
 }

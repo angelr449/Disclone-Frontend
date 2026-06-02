@@ -7,9 +7,10 @@ import { type User } from '../../../types/user';
 
 interface Props {
     user: User
+    children?: React.ReactNode
 }
 
-export const UserListItem = ({ user }: Props) => {
+export const UserListItem = ({ user , children }: Props) => {
     return (
         <Button
             variant="ghost"
@@ -30,7 +31,7 @@ export const UserListItem = ({ user }: Props) => {
                 </span>
             </div>
 
-            <Button>Prueba</Button>
+            {children}
         </Button>
     )
 }
