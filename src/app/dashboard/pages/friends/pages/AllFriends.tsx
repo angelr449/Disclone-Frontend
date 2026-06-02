@@ -27,7 +27,7 @@ export const AllFriends = () => {
           <Button 
             onClick={()=> handleMessage(user.id)}
           >
-            Mensaje
+            Message
           </Button>
         )}
       />

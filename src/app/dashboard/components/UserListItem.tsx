@@ -14,7 +14,7 @@ export const UserListItem = ({ user , children }: Props) => {
     return (
         <Button
             variant="ghost"
-            className="w-full justify-start gap-3 px-3  py-2 h-auto hover:bg-gray-700 hover:text-white"
+            className="flex items-center w-full justify-start gap-3 px-3  py-2 h-auto hover:bg-gray-700 hover:text-white"
         >
             <Avatar>
                 <AvatarImage src={user.avatar} />
@@ -24,7 +24,7 @@ export const UserListItem = ({ user , children }: Props) => {
                 </AvatarFallback>
             </Avatar>
 
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start flex-1">
                 <span>{user.name}</span>
                 <span className="text-xs   text-gray-200">
                     {user.status}
