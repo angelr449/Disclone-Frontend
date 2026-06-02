@@ -1,9 +1,21 @@
-import  { Button } from "@/components/ui/button"
+import {  useState } from "react";
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { postFriendRequest } from "@/app/dashboard/actions/post-friend-request";
 
 
 
 export const AddFriends = () => {
+  const [username, setUsername] = useState(""); 
+
+  const handleSendRequest = ()=>{
+
+    console.log(username)
+    postFriendRequest(username)
+
+  }
+
+
   return (
     <div className="flex flex-col gap-6 p-6">
 
@@ -28,17 +40,24 @@ export const AddFriends = () => {
     "
       >
         <Input
+        
           placeholder="Enter a username"
+          value={username}
+          onChange={(e)=> setUsername(e.target.value)}
           className="
         border-0
         bg-transparent
         shadow-none
         focus-visible:ring-0
         focus-visible:ring-offset-0
-      "
+        "
+         
         />
 
-        <Button className="bg-green-700 hover:bg-green-900">
+        <Button 
+        className="bg-green-700 hover:bg-green-900"
+         onClick={handleSendRequest}
+        >
           Send Friend Request
         </Button>
       </div>
