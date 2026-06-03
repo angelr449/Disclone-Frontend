@@ -14,3 +14,9 @@ export const getUserByName = async (name: string) => {
     console.log(response.data.user)
     return response.data;
 }
+
+export const getUserByToken = async()=>{
+    const response = await backendPath.get('users/me');
+    return response.data
+
+}
