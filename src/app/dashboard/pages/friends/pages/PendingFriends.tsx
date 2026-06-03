@@ -5,36 +5,65 @@ import { Button } from "@/components/ui/button";
 
 
 export const PendingFriends = () => {
-  const { data: friends } = usePendingFriends();
+  const { data: friends = [] } = usePendingFriends();
 
-  const handleFriendRequest = (id: number, value: boolean)=>{
-    console.log('handleFriendRequest user and value', id, value)
+  const sentRequests = friends.filter(
+    (friend) => friend.type === "sent"
+  );
 
-  } 
-  console.log(friends)
+  const receivedRequests = friends.filter(
+    (friend) => friend.type === "received"
+  );
+
+  const handleFriendRequest = (
+    id: number,
+    value: boolean
+  ) => {
+    console.log(id, value);
+  };
+
   return (
-    <div>
-      <h4>18</h4>
-      <RelationshipList users={friends ?? []}
-        renderActions={(user) => (
-          <div className="flex gap-2"
+    <div className="space-y-6">
+      <div>
+        <h4 className="font-semibold mb-2">
+          Solicitudes recibidas
+        </h4>
 
-          >
-            <Button className="bg-green-600 hover:bg-green-700 text-white"
-              onClick={() => handleFriendRequest(user.id, true)}
-            >
-              accept
-            </Button>
+        <RelationshipList
+          users={receivedRequests}
+          renderActions={(user) => (
+            <div className="flex gap-2">
+              <Button
+                className="bg-green-600 hover:bg-green-700 text-white"
+                onClick={() =>
+                  handleFriendRequest(user.id, true)
+                }
+              >
+                Accept
+              </Button>
 
-            <Button className="bg-red-600 hover:bg-red-700 text-white"
-              onClick={() => handleFriendRequest(user.id, false)}
-            >
-              decline
-            </Button>
-          </div>
+              <Button
+                className="bg-red-600 hover:bg-red-700 text-white"
+                onClick={() =>
+                  handleFriendRequest(user.id, false)
+                }
+              >
+                Decline
+              </Button>
+            </div>
+          )}
+        />
+      </div>
 
-        )}
-      />
+      <div>
+        <h4 className="font-semibold mb-2">
+          Solicitudes enviadas
+        </h4>
+
+        <RelationshipList
+          users={sentRequests}
+        />
+      </div>
     </div>
-  )
-}
+  );
+};

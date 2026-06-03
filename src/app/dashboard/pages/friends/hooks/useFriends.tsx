@@ -2,8 +2,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getFriends } from "@/app/dashboard/actions/get-friends";
 import { getPendingFriends } from "@/app/dashboard/actions/get-pending-friends";
-import { type User } from '../../../../../types/user';
-import { getUserByToken } from '../../../../actions/get-user';
+
+
 
 
 
@@ -14,6 +14,7 @@ interface PendingFriend {
     requester_id: number;
     receiver_id: number;
     status_id: number;
+    type: "sent" | "received";
 
     requester: {
         id: number;
@@ -33,11 +34,15 @@ interface PendingFriendsResponse {
     msg: string;
     friendsPendingList: PendingFriend[];
 }
+interface PendingFriendUI {
+    id: number;
+    type: "sent" | "received";
+    requester_id: number;
+    receiver_id: number;
+    name: string;
+    avatar?: string;
+}
 
-const { data:userToken } = useQuery({
-    queryKey: ["current-user"],
-    queryFn: getUserByToken,
-});
 
 export const useAllFriends = () => {
     return useQuery({
@@ -54,35 +59,29 @@ export const useOnlineFriends = () => {
 };
 
 export const usePendingFriends = () => {
-    
-
     return useQuery<
         PendingFriendsResponse,
         Error,
-        User[]
+        PendingFriendUI[]
     >({
         queryKey: ["pending-friends"],
         queryFn: getPendingFriends,
         select: (data) =>
-            data.friendsPendingList.map((friend) => {
-                const isRequester = friend.requester_id === userToken?.id;
+            data.friendsPendingList.map((friend) => ({
+                id: friend.id,
+                type: friend.type,
+                requester_id: friend.requester_id,
+                receiver_id: friend.receiver_id,
 
-                return {
-                    id: friend.id,
-                    requester_id: friend.requester_id,
-                    receiver_id: friend.receiver_id,
-                    status_id: friend.status_id,
-
-                    type: isRequester ? "sent" : "received",
-
-                    name: isRequester
+                name:
+                    friend.type === "sent"
                         ? friend.receiver.name
                         : friend.requester.name,
 
-                    avatar: isRequester
+                avatar:
+                    friend.type === "sent"
                         ? friend.receiver.avatar
                         : friend.requester.avatar,
-                };
-            }),
+            })),
     });
-}; //TODO distinguir entre solicitudes que envie y recibi
+};
