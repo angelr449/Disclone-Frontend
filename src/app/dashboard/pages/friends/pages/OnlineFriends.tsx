@@ -3,16 +3,30 @@ import { RelationshipList } from "@/app/dashboard/components/RelationshipList"
 
 import { useOnlineFriends } from "../hooks/useFriends";
 import { Button } from "@/components/ui/button";
+import { deleteFriendRequest } from "@/app/dashboard/actions/delete-friend-request";
+import { useQueryClient } from "@tanstack/react-query";
 
 
 
 export const OnlineFriends = () => {
+  const queryClient = useQueryClient();
   const { data: friends } = useOnlineFriends();
 
   //TODO solo mostrar usuarios que no esten desconectados
   const handleMessage = (id: number) => {
     console.log("Enviar mensaje a", id);
   };
+  const handleDeleteFriend = async (id: number) => {
+    try {
+      await deleteFriendRequest(id);
+
+      queryClient.invalidateQueries({
+        queryKey: ["online-friends"],
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
 
@@ -30,7 +44,8 @@ export const OnlineFriends = () => {
             </Button>
 
             <Button className="bg-destructive"
-              onClick={() => handleMessage(user.id)}
+
+              onClick={() => handleDeleteFriend(user.id)}
             >
               Delete
             </Button>
