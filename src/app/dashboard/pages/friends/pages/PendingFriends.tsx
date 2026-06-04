@@ -21,6 +21,9 @@ export const PendingFriends = () => {
   ) => {
     console.log(id, value);
   };
+  const handleMessage = (id: number) => {
+    console.log("Enviar mensaje a", id);
+  };
 
   return (
     <div className="space-y-6">
@@ -60,9 +63,15 @@ export const PendingFriends = () => {
           Solicitudes enviadas
         </h4>
 
-        <RelationshipList
-          users={sentRequests}
-        />
+        <RelationshipList  users={sentRequests}
+        renderActions={(user) => (
+          <Button
+            onClick={() => handleMessage(user.id)}
+          >
+            Message
+          </Button>
+        )}
+      />
       </div>
     </div>
   );

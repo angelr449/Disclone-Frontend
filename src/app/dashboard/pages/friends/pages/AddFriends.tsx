@@ -1,24 +1,44 @@
-import {  useState } from "react";
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { postFriendRequest } from "@/app/dashboard/actions/post-friend-request";
-
-
+import axios from "axios";
 
 export const AddFriends = () => {
-  const [username, setUsername] = useState(""); 
+  const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSendRequest = ()=>{
+  const handleSendRequest = async () => {
+  try {
+    setLoading(true);
+    setError("");
+    setSuccess("");
 
-    console.log(username)
-    postFriendRequest(username)
+    const data = await postFriendRequest(username);
 
+    setSuccess(
+      data?.msg ?? "Friend request sent successfully"
+    );
+
+    setUsername("");
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      setError(
+        error.response?.data?.msg ??
+        "No se pudo mandar la solicitud"
+      );
+    } else {
+      setError("Ocurrió un error inesperado");
+    }
+  } finally {
+    setLoading(false);
   }
-
+};
 
   return (
     <div className="flex flex-col gap-6 p-6">
-
       <div className="flex flex-col gap-1">
         <h2 className="text-lg font-bold uppercase">
           Add Friend
@@ -31,37 +51,49 @@ export const AddFriends = () => {
 
       <div
         className="
-      flex
-      items-center
-      gap-3
-      rounded-lg
-      bg-[#1e1f22]
-      p-2
-    "
+          flex
+          items-center
+          gap-3
+          rounded-lg
+          bg-[#1e1f22]
+          p-2
+        "
       >
         <Input
-        
           placeholder="Enter a username"
           value={username}
-          onChange={(e)=> setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
           className="
-        border-0
-        bg-transparent
-        shadow-none
-        focus-visible:ring-0
-        focus-visible:ring-offset-0
-        "
-         
+            border-0
+            bg-transparent
+            shadow-none
+            focus-visible:ring-0
+            focus-visible:ring-offset-0
+          "
         />
 
-        <Button 
-        className="bg-green-700 hover:bg-green-900"
-         onClick={handleSendRequest}
+        <Button
+          className="bg-green-700 hover:bg-green-900"
+          onClick={handleSendRequest}
+          disabled={loading || !username.trim()}
         >
-          Send Friend Request
+          {loading
+            ? "Sending..."
+            : "Send Friend Request"}
         </Button>
       </div>
 
+      {success && (
+        <div className="text-green-500 text-sm">
+          {success}
+        </div>
+      )}
+
+      {error && (
+        <div className="text-red-500 text-sm">
+          {error}
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
