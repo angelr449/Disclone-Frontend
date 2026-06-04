@@ -43,7 +43,7 @@ export const PendingFriends = () => {
       <div className="space-y-6">
         <div>
           <h4 className="font-semibold mb-2">
-            Solicitudes recibidas
+           Received Friend Requests
           </h4>
 
           <RelationshipList
@@ -74,7 +74,7 @@ export const PendingFriends = () => {
 
         <div>
           <h4 className="font-semibold mb-2">
-            Solicitudes enviadas
+            Sent Friend Requests
           </h4>
 
           <RelationshipList users={sentRequests}

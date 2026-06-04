@@ -32,7 +32,7 @@ export const OnlineFriends = () => {
             <Button className="bg-destructive"
               onClick={() => handleMessage(user.id)}
             >
-              Eliminar
+              Delete
             </Button>
           </div>
         )}
