@@ -23,12 +23,21 @@ export const AllFriends = () => {
         All Friends — {friends?.length || 0}
       </h4>
       <RelationshipList users={friends ?? []}
-        renderActions={(user)=>(
-          <Button  
-            onClick={()=> handleMessage(user.id)}
-          >
-            Message
-          </Button>
+        renderActions={(user) => (
+          <div className="flex gap-2">
+            <Button
+              onClick={() => handleMessage(user.id)}
+            >
+              Message
+            </Button>
+
+            <Button className="bg-destructive"
+              onClick={() => handleMessage(user.id)}
+            >
+              Eliminar
+            </Button>
+          </div>
+
         )}
       />
     </div>

@@ -22,11 +22,19 @@ export const OnlineFriends = () => {
       </h4>
       <RelationshipList users={friends ?? []}
         renderActions={(user) => (
-          <Button 
-            onClick={() => handleMessage(user.id)}
-          >
-            Message
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              onClick={() => handleMessage(user.id)}
+            >
+              Message
+            </Button>
+
+            <Button className="bg-destructive"
+              onClick={() => handleMessage(user.id)}
+            >
+              Eliminar
+            </Button>
+          </div>
         )}
       />
     </div>
