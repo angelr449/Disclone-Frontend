@@ -20,6 +20,8 @@ export const PendingFriends = () => {
     value: boolean
   ) => {
     console.log(id, value);
+
+
   };
   const handleMessage = (id: number) => {
     console.log("Enviar mensaje a", id);
@@ -36,7 +38,7 @@ export const PendingFriends = () => {
           users={receivedRequests}
           renderActions={(user) => (
             <div className="flex gap-2">
-              <Button
+              <Button 
                 className="bg-green-600 hover:bg-green-700 text-white"
                 onClick={() =>
                   handleFriendRequest(user.id, true)
@@ -45,7 +47,7 @@ export const PendingFriends = () => {
                 Accept
               </Button>
 
-              <Button
+              <Button 
                 className="bg-red-600 hover:bg-red-700 text-white"
                 onClick={() =>
                   handleFriendRequest(user.id, false)

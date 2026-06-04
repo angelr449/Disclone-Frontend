@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "../../../components/ui/avatar"
-import { Button } from "../../../components/ui/button"
+
 import { type User } from '../../../types/user';
 
 
@@ -12,8 +12,8 @@ interface Props {
 
 export const UserListItem = ({ user , children }: Props) => {
     return (
-        <Button
-            variant="ghost"
+        <div
+          
             className="flex items-center w-full justify-start gap-3 px-3  py-2 h-auto hover:bg-gray-700 hover:text-white"
         >
             <Avatar>
@@ -32,6 +32,6 @@ export const UserListItem = ({ user , children }: Props) => {
             </div>
 
             {children}
-        </Button>
+        </div>
     )
 }

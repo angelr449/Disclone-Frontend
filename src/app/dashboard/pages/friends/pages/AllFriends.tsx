@@ -24,7 +24,7 @@ export const AllFriends = () => {
       </h4>
       <RelationshipList users={friends ?? []}
         renderActions={(user)=>(
-          <Button 
+          <Button  
             onClick={()=> handleMessage(user.id)}
           >
             Message
