@@ -2,6 +2,7 @@
 import { RelationshipList } from "@/app/dashboard/components/RelationshipList"
 import { useAllFriends } from "../hooks/useFriends";
 import { Button } from "@/components/ui/button";
+import { deleteFriendRequest } from "@/app/dashboard/actions/delete-friend-request";
 
 
 
@@ -14,6 +15,10 @@ export const AllFriends = () => {
   const handleMessage = (id: number) => {
     console.log("Enviar mensaje a", id);
   };
+
+  const handleDeleteFriend = async(id)=>{
+    await deleteFriendRequest(id)
+  }
 
 
   return (
@@ -32,7 +37,8 @@ export const AllFriends = () => {
             </Button>
 
             <Button className="bg-destructive"
-              onClick={() => handleMessage(user.id)}
+              
+              onClick={() => handleDeleteFriend(user.id)}
             >
               Delete
             </Button>
