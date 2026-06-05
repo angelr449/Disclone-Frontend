@@ -1,6 +1,7 @@
 
 
-import { AuthPage } from "@/app/auth/pages/AuthPage";
+
+import { AuthPage } from "@/auth/pages/AuthPage";
 import { DashboardLayout } from "@/app/dashboard/layouts/DashboardLayout";
 import { AddFriends } from "@/app/dashboard/pages/friends/pages/AddFriends";
 import { AllFriends } from "@/app/dashboard/pages/friends/pages/AllFriends";
@@ -11,6 +12,7 @@ import { createBrowserRouter } from "react-router";
 import { ProtectedRoute } from "./guards/ProtectedRoute";
 import { PublicRoute } from "./guards/PublicRoute";
 import { ChatLayout } from "@/app/chat/layouts/ChatLayout";
+
 
 
 
@@ -40,7 +42,7 @@ export const appRouter = createBrowserRouter([
     {
         element: <PublicRoute />,
         children: [
-            { path: "/auth", element: <AuthPage /> },
+            { path: "/auth", element: <AuthPage/>},
         ],
     },
 ]);

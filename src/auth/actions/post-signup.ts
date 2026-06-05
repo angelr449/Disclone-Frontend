@@ -1,4 +1,4 @@
-import { backendPath } from "../../../api/backend-path.api";
+import { backendPath } from "@/api/backend-path.api";
 
 
 interface SignupData {

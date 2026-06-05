@@ -12,7 +12,8 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { postLogin } from "@/app/auth/actions/post-login"
+import { postLogin } from "@/auth/actions/post-login"
+
 // import { verifyJWT } from "@/helpers/verifyJWT"
 
 interface Props {

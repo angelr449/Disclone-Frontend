@@ -1,5 +1,6 @@
 
 import { CustomChatHeader } from "../components/CustomChatHeader";
+import { ChatPage } from "../pages/ChatPage";
 
 export const ChatLayout = () => {
 
@@ -9,6 +10,7 @@ export const ChatLayout = () => {
 
       <main className="h-[calc(100vh-48px)]">
         {/* Mensajes */}
+        <ChatPage/>
       </main>
     </div>
        
