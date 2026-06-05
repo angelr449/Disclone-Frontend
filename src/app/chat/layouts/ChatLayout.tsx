@@ -1,18 +1,22 @@
+import {
+  SidebarProvider,
+  SidebarInset,
+} from "@/components/ui/sidebar"
+// 👈 agregar
+import { CustomChatHeader } from "../components/CustomChatHeader"
+import { ChatPage } from "../pages/ChatPage"
+import { CustomSidebarChat } from '../../components/CustomSidebarChat';
 
-import { CustomChatHeader } from "../components/CustomChatHeader";
-import { ChatPage } from "../pages/ChatPage";
-
-export const ChatLayout = () => {
-
-    return (
-         <div className="h-screen bg-[#36393f] text-white">
-      <CustomChatHeader />
-
-      <main className="h-[calc(100vh-48px)]">
-        {/* Mensajes */}
-        <ChatPage/>
-      </main>
-    </div>
-       
-    );
-}
+export const ChatLayout = () => (
+  <div className="h-screen bg-[#36393f] text-white"> 
+    <SidebarProvider>
+      <CustomSidebarChat /> {/* 👈 esto faltaba */}
+      <SidebarInset className="flex flex-col flex-1 min-w-0">
+        <CustomChatHeader />
+        <main className="flex-1 overflow-hidden h-screen bg-[#36393f] text-white">
+          <ChatPage />
+        </main>
+      </SidebarInset>
+    </SidebarProvider>
+  </div>
+)
