@@ -5,6 +5,7 @@ import {
   Compass,
   Plus,
 } from "lucide-react";
+import { CustomUserPanel } from "./CustomUserPanel";
 
 export const CustomChatSidebar = () => {
   return (
@@ -71,6 +72,10 @@ export const CustomChatSidebar = () => {
           name="Shei"
         />
       </div>
+
+
+      {/* UserPanelButton */}
+      <CustomUserPanel/>
     </aside>
   );
 };
