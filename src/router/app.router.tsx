@@ -12,6 +12,7 @@ import { createBrowserRouter } from "react-router";
 import { ProtectedRoute } from "./guards/ProtectedRoute";
 import { PublicRoute } from "./guards/PublicRoute";
 import { ChatLayout } from "@/app/chat/layouts/ChatLayout";
+import { AppLayout } from "@/app/layout/AppLayout";
 
 
 
@@ -22,16 +23,22 @@ export const appRouter = createBrowserRouter([
         element: <ProtectedRoute />,
         children: [
             {
-                path: "/",
-                element: <DashboardLayout />,
+                element: <AppLayout />,
                 children: [
-                    { index: true, element: <OnlineFriends /> },
-                    { path: "friends", element: <AllFriends /> },
-                    { path: "friends/pending", element: <PendingFriends /> },
-                    { path: "friends/add", element: <AddFriends /> },
-                ],
+                    {
+                        path: "/",
+                        element: <DashboardLayout />,
+                        children: [
+                            { index: true, element: <OnlineFriends /> },
+                            { path: "friends", element: <AllFriends /> },
+                            { path: "friends/pending", element: <PendingFriends /> },
+                            { path: "friends/add", element: <AddFriends /> },
+                        ],
 
+                    },
+                ]
             },
+            
             {
                 path: "/message",
                 element: <ChatLayout />
@@ -42,7 +49,43 @@ export const appRouter = createBrowserRouter([
     {
         element: <PublicRoute />,
         children: [
-            { path: "/auth", element: <AuthPage/>},
+            { path: "/auth", element: <AuthPage /> },
         ],
     },
 ]);
+// export const appRouter = createBrowserRouter([
+//     {
+//         element: <AppLayout />,
+//         children: [
+//             {
+//                 element: <ProtectedRoute />,
+//                 children: [
+//                     {
+//                         path: "/",
+//                         element: <DashboardLayout />,
+//                         children: [
+//                             { index: true, element: <OnlineFriends /> },
+//                             { path: "friends", element: <AllFriends /> },
+//                             { path: "friends/pending", element: <PendingFriends /> },
+//                             { path: "friends/add", element: <AddFriends /> },
+//                         ],
+//                     },
+//                     {
+//                         path: "/message",
+//                         element: <ChatLayout />,
+//                     },
+//                 ],
+//             },
+//         ],
+//     },
+
+//     {
+//         element: <PublicRoute />,
+//         children: [
+//             {
+//                 path: "/auth",
+//                 element: <AuthPage />,
+//             },
+//         ],
+//     },
+// ]);
