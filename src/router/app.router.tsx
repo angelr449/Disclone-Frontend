@@ -25,24 +25,32 @@ export const appRouter = createBrowserRouter([
             {
                 element: <AppLayout />,
                 children: [
+                    // Friends
                     {
                         path: "/",
                         element: <DashboardLayout />,
                         children: [
+                            
                             { index: true, element: <OnlineFriends /> },
                             { path: "friends", element: <AllFriends /> },
                             { path: "friends/pending", element: <PendingFriends /> },
                             { path: "friends/add", element: <AddFriends /> },
+
+
                         ],
 
                     },
+                    // Messages 
+                    {
+                        path: "/message",
+                        element: <ChatLayout />
+                    }
                 ]
+
             },
-            
-            {
-                path: "/message",
-                element: <ChatLayout />
-            }
+
+
+
         ],
     },
 

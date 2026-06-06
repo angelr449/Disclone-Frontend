@@ -11,11 +11,11 @@ export const CustomChatSidebar = () => {
     <aside className="w-[300px] bg-[#2b2d31] border-r border-[#1e1f22] flex flex-col">
       
       {/* Buscador */}
-      <div className="p-2 border-b border-[#1e1f22]">
+      {/* <div className="p-2 border-b border-[#1e1f22]">
         <button className="w-full bg-[#1e1f22] text-[#949ba4] text-sm px-3 py-2 rounded-md text-left">
           Busca o inicia una conversación
         </button>
-      </div>
+      </div> */}
 
       {/* Navegación */}
       <div className="p-2 space-y-1">
@@ -25,20 +25,7 @@ export const CustomChatSidebar = () => {
           active
         />
 
-        <SidebarItem
-          icon={<Compass size={18} />}
-          label="Nitro"
-        />
-
-        <SidebarItem
-          icon={<Store size={18} />}
-          label="Tienda"
-        />
-
-        <SidebarItem
-          icon={<MessageCircle size={18} />}
-          label="Misiones"
-        />
+       
       </div>
 
       {/* Divider */}
