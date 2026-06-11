@@ -1,4 +1,5 @@
 
+import { getCookie } from '@/helpers/getCookie';
 import axios from 'axios';
 
 
@@ -9,7 +10,8 @@ export const backendPath = axios.create({
 });
 
 backendPath.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token"); // ajusta la key si es diferente
+  
+    const token = getCookie('token'); // Setting Key
 
     if (token) {
         config.headers['x-token'] = token;
