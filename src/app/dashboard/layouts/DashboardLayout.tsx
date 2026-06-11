@@ -1,16 +1,15 @@
-import { Link, Outlet } from "react-router"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Separator } from "@/components/ui/separator"
-import { Users } from "lucide-react"
+import { Link, Outlet, useLocation } from "react-router";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
+import { Users } from "lucide-react";
 
 export const DashboardLayout = () => {
+  const location = useLocation();
+
   return (
     <div className="h-screen bg-[#313338] text-white">
-
       {/* Topbar */}
-      <div className="flex items-center h-12 px-4 border-b border-[#1e1f22] bg-[#2b2d31] ">
-
-        {/* Friends Icon */}
+      <div className="flex items-center h-12 px-4 border-b border-[#1e1f22] bg-[#2b2d31]">
         <div className="flex items-center gap-2 pr-4">
           <Users size={20} />
           <span className="font-semibold text-sm">
@@ -23,23 +22,25 @@ export const DashboardLayout = () => {
           className="h-6 bg-[#4e5058]"
         />
 
-        {/* Navigation */}
-        <Tabs defaultValue="online" className="ml-4">
-
+        <Tabs
+          value={location.pathname}
+          className="ml-4"
+        >
           <TabsList className="bg-transparent gap-2">
 
             <TabsTrigger
-              value="online"
+              value="/"
+              asChild
               className="text-white data-[state=active]:bg-[#434552] data-[state=active]:text-white rounded-sm"
             >
               <Link to="/">
                 Online
               </Link>
-
             </TabsTrigger>
 
             <TabsTrigger
-              value="all"
+              value="/friends"
+              asChild
               className="text-white data-[state=active]:bg-[#434552] data-[state=active]:text-white rounded-sm"
             >
               <Link to="/friends">
@@ -48,7 +49,8 @@ export const DashboardLayout = () => {
             </TabsTrigger>
 
             <TabsTrigger
-              value="pending"
+              value="/friends/pending"
+              asChild
               className="text-white data-[state=active]:bg-[#434552] data-[state=active]:text-white rounded-sm"
             >
               <Link to="/friends/pending">
@@ -57,16 +59,16 @@ export const DashboardLayout = () => {
             </TabsTrigger>
 
             <TabsTrigger
-              value="add-friend"
-              className=" text-white bg-green-600 hover:bg-green-700  rounded-sm data-[state=active]:bg-green-900 data-[state=active]:text-white"
+              value="/friends/add"
+              asChild
+              className="text-white bg-green-600 hover:bg-green-700 rounded-sm data-[state=active]:bg-green-900 data-[state=active]:text-white"
             >
-             <Link to="/friends/add">
-               Add Friend
+              <Link to="/friends/add">
+                Add Friend
               </Link>
             </TabsTrigger>
 
           </TabsList>
-
         </Tabs>
       </div>
 
@@ -74,7 +76,6 @@ export const DashboardLayout = () => {
       <div className="p-4">
         <Outlet />
       </div>
-
     </div>
-  )
-}
+  );
+};
