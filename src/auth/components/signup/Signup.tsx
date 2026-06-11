@@ -58,7 +58,7 @@ export const Signup = ({ isLogin, setIsLogin }: Props) => {
       {
         onSuccess: (data) => {
           console.log("SUCCESS");
-          localStorage.setItem("token", data.data.token)
+          document.cookie = `token=${data.data.token}; max-age=604800; path=/`
           navigate("/")
         },
 
