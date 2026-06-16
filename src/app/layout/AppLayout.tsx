@@ -1,5 +1,5 @@
 import { Outlet } from "react-router"
-import { CustomChatSidebar } from "../components/sidebar-chat/CustomSidebarChat"
+import { CustomChatSidebar } from "../chat/components/sidebar-chat/CustomSidebarChat"
 
 
 export const AppLayout = () => {
