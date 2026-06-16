@@ -103,7 +103,7 @@ export const CustomChatSidebar = () => {
 
       </div>
 
-      <CustomUserPanel />
+      <CustomUserPanel  />
     </aside>
   );
 };
