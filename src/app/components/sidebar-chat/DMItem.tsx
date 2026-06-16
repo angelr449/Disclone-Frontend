@@ -1,16 +1,23 @@
+import { NavLink } from "react-router";
 
-
-export const DMItem = ({
-  avatar,
-  name,
-  subtitle,
-}: {
+interface DMItemProps {
+  to: string;
   avatar: string;
   name: string;
   subtitle?: string;
-}) => {
-return (
-    <button className="w-full flex items-center gap-3 p-2 rounded-md hover:bg-[#35373c] transition-colors">
+}
+
+export const DMItem = ({
+  to,
+  avatar,
+  name,
+  subtitle,
+}: DMItemProps) => {
+  return (
+    <NavLink
+      to={to}
+      className="w-full flex items-center gap-3 p-2 rounded-md hover:bg-[#35373c] transition-colors"
+    >
       <img
         src={avatar}
         alt={name}
@@ -28,6 +35,6 @@ return (
           </p>
         )}
       </div>
-    </button>
+    </NavLink>
   );
-}
+};
