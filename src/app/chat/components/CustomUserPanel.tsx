@@ -47,7 +47,7 @@ export const CustomUserPanel = () => {
       </div>
 
       <div className="flex items-center">
-        <button
+        {/* <button
           className="
             w-8 h-8
             flex items-center justify-center
@@ -73,7 +73,7 @@ export const CustomUserPanel = () => {
           "
         >
           <Headphones size={18} />
-        </button>
+        </button> */}
 
         <button
           className="

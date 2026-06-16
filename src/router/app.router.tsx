@@ -42,7 +42,7 @@ export const appRouter = createBrowserRouter([
                     },
                     // Messages 
                     {
-                        path: "/message/:id",
+                        path: "/message/:chatId",
                         element: <ChatLayout />
                     }
                 ]

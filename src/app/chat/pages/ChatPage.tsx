@@ -1,7 +1,7 @@
-
-
 export const ChatPage = () => {
   return (
-    <div>ChatPage</div>
-  )
-}
+    <div className="h-full">
+      {/* Aquí irán los mensajes */}
+    </div>
+  );
+};
