@@ -1,21 +1,20 @@
+import { NavLink } from "react-router";
 
-
-export const SidebarItem = ({
-  icon,
-  label,
-  active = false,
-}: {
+interface SidebarItemProps {
+  to: string;
   icon: React.ReactNode;
   label: string;
-  active?: boolean;
-}) => {
+}
+
+export const SidebarItem = ({to, icon, label }: SidebarItemProps) => {
   return (
-    <button
-      className={`
+    <NavLink
+      to={to}
+      className={({ isActive }) => `
         w-full flex items-center gap-3 px-3 py-2 rounded-md
         transition-colors text-sm font-medium
         ${
-          active
+          isActive
             ? "bg-[#404249] text-white"
             : "text-[#b5bac1] hover:bg-[#35373c] hover:text-white"
         }
@@ -23,6 +22,6 @@ export const SidebarItem = ({
     >
       {icon}
       {label}
-    </button>
+    </NavLink>
   );
-}
+};
