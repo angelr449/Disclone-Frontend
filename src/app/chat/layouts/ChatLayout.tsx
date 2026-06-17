@@ -4,21 +4,11 @@ import { useQuery } from "@tanstack/react-query";
 import { CustomChatHeader } from "../components/CustomChatHeader";
 import { ChatPage } from "../pages/ChatPage";
 import { getChats } from "../actions/get-chats";
-// TODO separar Props como User, Chat, ChatsResponse en un archivo individual
-interface User {
-  id: number;
-  name: string;
-}
+import type { Chat } from '../../../types/chat';
 
-interface Chat {
-  id: number;
-  type: string;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
-  Users: User[];
-}
+
+
+
 
 interface ChatsResponse {
   chats: Chat[];

@@ -1,8 +1,5 @@
-interface Chat {
-  id: number;
-  name: string;
-  type: string;
-}
+import type{ Chat } from '../../../types/chat';
+
 
 interface Props {
   chat?: Chat;
