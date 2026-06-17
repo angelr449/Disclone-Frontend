@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { CustomChatHeader } from "../components/CustomChatHeader";
 import { ChatPage } from "../pages/ChatPage";
 import { getChats } from "../actions/get-chats";
-
+// TODO separar Props como User, Chat, ChatsResponse en un archivo individual
 interface User {
   id: number;
   name: string;
@@ -37,11 +37,11 @@ export const ChatLayout = () => {
   });
 
   if (isLoading) {
-    return <div>Cargando chat...</div>;
+    return <div>Loading chat...</div>;
   }
 
   if (isError) {
-    return <div>Error al cargar los chats.</div>;
+    return <div>Error loading chats</div>;
   }
 
   const chat = chatsData?.chats.find(

@@ -13,7 +13,7 @@ export const CustomChatHeader = ({ chat }: Props) => {
     return (
       <header className="h-12 px-4 bg-[#36393f] border-b border-[#202225] flex items-center">
         <p className="text-[#b9bbbe]">
-          Selecciona un chat
+          Select a chat
         </p>
       </header>
     );

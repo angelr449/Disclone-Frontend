@@ -48,17 +48,17 @@ export const CustomChatSidebar = () => {
         <SidebarItem
           to="/"
           icon={<Users size={18} />}
-          label="Amigos"
+          label="Friends"
         />
       </div>
 
       {/* Divider */}
       <div className="mx-2 border-t border-[#3f4147]" />
 
-      {/* Mensajes directos */}
+      {/* Direct Messages */}
       <div className="flex items-center justify-between px-4 pt-4 pb-2">
         <span className="text-xs uppercase text-[#949ba4] font-semibold">
-          Mensajes directos
+          DM
         </span>
 
         <button className="text-[#949ba4] hover:text-white">
@@ -66,18 +66,18 @@ export const CustomChatSidebar = () => {
         </button>
       </div>
 
-      {/* Lista de chats */}
+      {/* Lists of  chats */}
       <div className="flex-1 overflow-y-auto px-2 space-y-1">
 
         {isLoading && (
           <p className="text-sm text-[#949ba4] px-2">
-            Cargando chats...
+            Loading chats...
           </p>
         )}
 
         {isError && (
           <p className="text-sm text-red-400 px-2">
-            Error al cargar los chats.
+            Error loading chats.
           </p>
         )}
 
@@ -97,13 +97,13 @@ export const CustomChatSidebar = () => {
           !isError &&
           data?.chats?.length === 0 && (
             <p className="text-sm text-[#949ba4] px-2">
-              No tienes chats.
+              You don't have chats.
             </p>
           )}
 
       </div>
 
-      <CustomUserPanel  />
+      <CustomUserPanel />
     </aside>
   );
 };
