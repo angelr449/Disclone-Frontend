@@ -1,5 +1,8 @@
+import type {  Message } from '../interface/message.interface';
+
+
 type MessageItemProps = {
-  message: any;
+  message: Message;
   isSameAuthor: boolean;
 };
 

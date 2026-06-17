@@ -1,8 +1,9 @@
+import type { Message } from "../interface/message.interface";
 import { CustomMessageItem } from "./CustomMessageItem";
 
 
 type Props = {
-  messages: any[];
+  messages: Message[];
 };
 
 export const CustomMessageList = ({
