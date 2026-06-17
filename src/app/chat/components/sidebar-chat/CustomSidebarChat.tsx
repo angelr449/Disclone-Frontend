@@ -11,20 +11,11 @@ import { DMItem } from "./DMItem";
 
 import { getChats } from "../../actions/get-chats";
 
-interface User {
-  id: number;
-  name: string;
-}
+import type  { Chat } from '../../../../types/chat';
 
-interface Chat {
-  id: number;
-  type: string;
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
-  Users: User[];
-}
+
+
+
 
 interface ChatsResponse {
   chats: Chat[];
