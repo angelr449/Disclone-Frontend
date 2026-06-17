@@ -1,8 +1,7 @@
 import { backendPath } from "@/api/backend-path.api";
 
-
-export const getMessages = async(chatId) => {
+export const getMessages = async (chatId: string) => {
   const response = await backendPath.get(`/messages/${chatId}`);
-    console.log(response.data)
-     return response.data;
-}
+
+  return response.data;
+};
