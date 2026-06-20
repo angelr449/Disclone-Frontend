@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { deleteFriendRequest } from "@/app/dashboard/actions/delete-friend-request";
 import { useQueryClient } from "@tanstack/react-query";
 
-
+//TODO hacer que el boton the message funcione
+//TODO  problema con los avatares de perfil
 
 export const OnlineFriends = () => {
   const queryClient = useQueryClient();
