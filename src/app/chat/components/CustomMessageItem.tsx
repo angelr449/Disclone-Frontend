@@ -1,5 +1,4 @@
-import type {  Message } from '../interface/message.interface';
-
+import type { Message } from '../interface/message.interface';
 
 type MessageItemProps = {
   message: Message;
@@ -23,15 +22,15 @@ export const CustomMessageItem = ({
   return (
     <div className="flex gap-3 px-4 py-2 hover:bg-[#35373c]">
       <img
-        src={message.sender.avatar}
-        alt={message.sender.name}
+        src={message.sender?.avatar ?? "/default-avatar.png"}
+        alt={message.sender?.name ?? "Unknown user"}
         className="w-10 h-10 rounded-full flex-shrink-0"
       />
 
       <div>
         <div className="flex items-center gap-2">
           <span className="font-semibold text-white">
-            {message.sender.name}
+            {message.sender?.name ?? "Unknown user"}
           </span>
 
           <span className="text-xs text-gray-400">

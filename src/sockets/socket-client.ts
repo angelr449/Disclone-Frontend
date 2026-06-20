@@ -11,10 +11,16 @@ export const getSocket = (): Socket => {
     const token = getCookie("token");
 
     socket = io(BASE_URL, {
-      extraHeaders: {
-        "x-token": token ?? "",
+      auth: {
+        token,
       },
       transports: ["websocket"],
+    });
+
+   
+
+    socket.on("connect_error", (err) => {
+      console.log(" Connection error:", err.message);
     });
   }
 
