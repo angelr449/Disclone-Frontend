@@ -2,9 +2,11 @@ import { Link, Outlet, useLocation } from "react-router";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { Users } from "lucide-react";
+import { usePresence } from "../pages/friends/hooks/usePresence";
 
 export const DashboardLayout = () => {
   const location = useLocation();
+  usePresence();
 
   return (
     <div className="h-screen bg-[#313338] text-white">

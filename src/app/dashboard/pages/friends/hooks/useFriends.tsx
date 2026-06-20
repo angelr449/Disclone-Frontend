@@ -2,12 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getFriends } from "@/app/dashboard/actions/get-friends";
 import { getPendingFriends } from "@/app/dashboard/actions/get-pending-friends";
-
-
-
-
-
-
+import { usePresence } from "./usePresence";
 
 interface PendingFriend {
     id: number;
@@ -30,10 +25,12 @@ interface PendingFriend {
         email: string;
     };
 }
+
 interface PendingFriendsResponse {
     msg: string;
     friendsPendingList: PendingFriend[];
 }
+
 interface PendingFriendUI {
     id: number;
     type: "sent" | "received";
@@ -43,7 +40,6 @@ interface PendingFriendUI {
     avatar?: string;
 }
 
-
 export const useAllFriends = () => {
     return useQuery({
         queryKey: ["all-friends"],
@@ -52,18 +48,25 @@ export const useAllFriends = () => {
 };
 
 export const useOnlineFriends = () => {
-    return useQuery({
-        queryKey: ["online-friends"],
+    const { data: onlineIds = [] } = usePresence();
+
+    const query = useQuery({
+        queryKey: ["all-friends"],
         queryFn: getFriends,
     });
+
+    const onlineFriends = query.data?.filter((friend: { id: number }) =>
+        onlineIds.includes(friend.id)
+    );
+
+    return {
+        ...query,
+        data: onlineFriends,
+    };
 };
 
 export const usePendingFriends = () => {
-    return useQuery<
-        PendingFriendsResponse,
-        Error,
-        PendingFriendUI[]
-    >({
+    return useQuery<PendingFriendsResponse, Error, PendingFriendUI[]>({
         queryKey: ["pending-friends"],
         queryFn: getPendingFriends,
         select: (data) =>
