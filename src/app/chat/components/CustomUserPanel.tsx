@@ -52,8 +52,9 @@ export const CustomUserPanel = () => {
           <p className="text-sm font-medium text-white truncate">
             {user.name}
           </p>
+          {/* //TODO set the diferents states */}
           <p className="text-xs text-[#b5bac1] truncate">
-            En línea //TODO set the diferents states
+            En línea 
           </p>
         </div>
       </div>
