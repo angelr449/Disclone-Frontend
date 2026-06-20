@@ -39,9 +39,9 @@ export const ChatPage = () => {
 
   return (
     <div className="h-full flex flex-col bg-[#313338]">
-      <div className="flex-1 overflow-y-auto">
-        <CustomMessageList messages={data.chatHistory} />
-      </div>
+      <div className="flex-1 overflow-y-auto discord-scrollbar">
+  <CustomMessageList messages={data.chatHistory} />
+</div>
 
       <form onSubmit={handleSubmit} className="p-4">
         <input
