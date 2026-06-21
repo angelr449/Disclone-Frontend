@@ -37,8 +37,7 @@ export const CustomChatSidebar = () => {
   });
 
   const currentUser = currentUserData?.user;
-console.log('currentUserData:', currentUserData);
-console.log('currentUser:', currentUser);
+
   return (
     <aside className="w-[300px] bg-[#2b2d31] border-r border-[#1e1f22] flex flex-col">
 
@@ -80,7 +79,7 @@ console.log('currentUser:', currentUser);
           !isError &&
           currentUser &&
           data?.chats?.map((chat) => {
-             console.log('chat:', chat.id, chat.name, chat.Users);
+           
             const { name, avatar } = getDmDisplayInfo(chat, currentUser.id);
 
             return (
