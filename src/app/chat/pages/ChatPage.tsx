@@ -1,4 +1,4 @@
-// src/pages/ChatPage.tsx
+
 import { useState } from "react";
 import { useParams } from "react-router";
 
@@ -15,7 +15,7 @@ export const ChatPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(" handleSubmit fired, content:", content);
+    
     if (!content.trim()) return;
     sendMessage(content);
     setContent("");

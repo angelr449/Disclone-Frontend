@@ -1,4 +1,4 @@
-// services/friends.service.ts
+
 
 import { backendPath } from "@/api/backend-path.api";
 

@@ -10,7 +10,7 @@ export const postFriendRequest = async (username: string) => {
     const { data } = await backendPath.post("friends/send-request", {
         friendId: String(user.id)
     });
-    console.log(data)
+    
     return data;
 
 }

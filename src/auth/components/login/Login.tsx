@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { postLogin } from "@/auth/actions/post-login"
 
-// import { verifyJWT } from "@/helpers/verifyJWT"
+
 
 interface Props {
   isLogin: boolean,
@@ -22,7 +22,7 @@ interface Props {
 }
 
 
-//TODO poder cambiar la contrasenia
+
 
 export const Login = ({ isLogin, setIsLogin }: Props) => {
 

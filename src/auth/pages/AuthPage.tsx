@@ -10,7 +10,7 @@ export const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
   return (
 
-
+    // TODO poder cambiar la contrasenia
     <>
 
       {
