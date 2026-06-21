@@ -22,7 +22,7 @@ interface Props {
 }
 
 
-
+//TODO poder cambiar la contrasenia
 
 export const Login = ({ isLogin, setIsLogin }: Props) => {
 

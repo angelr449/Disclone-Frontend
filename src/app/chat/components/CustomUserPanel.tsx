@@ -21,7 +21,7 @@ export const CustomUserPanel = () => {
 
   const handleLogout = () => {
     logout(queryClient);
-    navigate("/");
+    navigate("/auth");
   };
 
   if (isLoading) {
