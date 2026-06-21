@@ -44,7 +44,7 @@ export const CustomUserPanel = () => {
     <div className="h-[52px] bg-[#232428] border-t border-[#1e1f22] flex items-center justify-between px-2">
       <div className="flex items-center gap-2 min-w-0">
         <img
-          src={`https://i.pravatar.cc/40?u=${user.id}`}
+          src={user.avatar || `https://i.pravatar.cc/40?u=${user.id}`}
           alt={user.name}
           className="w-8 h-8 rounded-full"
         />
