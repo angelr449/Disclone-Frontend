@@ -1,37 +1,39 @@
-
+import { useNavigate } from "react-router";
 import { RelationshipList } from "@/app/dashboard/components/RelationshipList"
 import { useAllFriends } from "../hooks/useFriends";
 import { Button } from "@/components/ui/button";
 import { deleteFriendRequest } from "@/app/dashboard/actions/delete-friend-request";
+import { createChat } from "@/app/dashboard/actions/create-chat";
 import { useQueryClient } from "@tanstack/react-query";
-
-
-
 
 export const AllFriends = () => {
 
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { data: friends } = useAllFriends();
 
-  const handleMessage = (id: number) => {
-    console.log("Enviar mensaje a", id);
+  const handleMessage = async (id: number) => {
+    try {
+      const { chat } = await createChat({ type: 'dm', targetUserId: id });
+      navigate(`/message/${chat.id}`);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleDeleteFriend = async (id: number) => {
-  try {
-    await deleteFriendRequest(id);
+    try {
+      await deleteFriendRequest(id);
 
-    queryClient.invalidateQueries({
-      queryKey: ["all-friends"],
-    });
-  } catch (error) {
-    console.error(error);
-  }
-};
-
+      queryClient.invalidateQueries({
+        queryKey: ["all-friends"],
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-
     <div>
       <h4 className="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-zinc-400">
         All Friends — {friends?.length || 0}
@@ -46,13 +48,11 @@ export const AllFriends = () => {
             </Button>
 
             <Button className="bg-destructive"
-              
               onClick={() => handleDeleteFriend(user.id)}
             >
               Delete
             </Button>
           </div>
-
         )}
       />
     </div>

@@ -1,4 +1,8 @@
-import type{ Chat } from '../../../types/chat';
+import { useQuery } from "@tanstack/react-query";
+
+import type { Chat } from '../../../types/chat';
+import { getUserByToken } from "../../actions/get-user";
+import { getDmDisplayInfo } from "../utils/get-dm-display-info";
 
 
 interface Props {
@@ -6,6 +10,13 @@ interface Props {
 }
 
 export const CustomChatHeader = ({ chat }: Props) => {
+  const { data: currentUserData } = useQuery({
+    queryKey: ["current-user"],
+    queryFn: getUserByToken,
+  });
+
+  const currentUser = currentUserData?.user;
+
   if (!chat) {
     return (
       <header className="h-12 px-4 bg-[#36393f] border-b border-[#202225] flex items-center">
@@ -16,18 +27,22 @@ export const CustomChatHeader = ({ chat }: Props) => {
     );
   }
 
+  const { name, avatar } = currentUser
+    ? getDmDisplayInfo(chat, currentUser.id)
+    : { name: chat.name, avatar: `https://i.pravatar.cc/40?u=${chat.id}` };
+
   return (
     <header className="h-12 px-4 bg-[#36393f] border-b border-[#202225] flex items-center justify-between">
       <div className="flex items-center gap-3">
         <img
-          src={`https://i.pravatar.cc/40?u=${chat.id}`}
-          alt={chat.name}
+          src={avatar}
+          alt={name}
           className="w-8 h-8 rounded-full"
         />
 
         <div>
           <h2 className="text-sm font-semibold text-white">
-            {chat.name}
+            {name}
           </h2>
 
           <p className="text-xs text-[#b9bbbe]">
