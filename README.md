@@ -120,6 +120,14 @@ Disclone-Frontend/
 
 ---
 
+## Screenshots
+
+| Group chat | Online friends | Pending friend requests |
+|---|---|---|
+| ![Group chat](./screenshots/chat-group.png) | ![Online friends](./screenshots/friends-online.png) | ![Pending friend requests](./screenshots/friends-pending.png) |
+
+---
+
 ## Backend
 
 This is the frontend client for **Disclone**, a Discord-inspired backend built with Node.js, Express, PostgreSQL, and Socket.io.
